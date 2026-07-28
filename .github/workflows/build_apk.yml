@@ -33,6 +33,11 @@ jobs:
       run: flutter pub get --no-example
 
     - name: Build APK
+      uses: gradle/actions/setup-gradle@v3
+      with:
+        build-root-directory: android
+      
+    - name: Executar Build APK
       run: flutter build apk --release --no-tree-shake-icons
 
     - name: Upload APK Artifact
