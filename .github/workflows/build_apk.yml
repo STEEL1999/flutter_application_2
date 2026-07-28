@@ -7,7 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-  
+    env:
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -29,8 +31,10 @@ jobs:
         flutter config --no-analytics
         flutter precache --android
 
-    - name: Install Dependencies
-      run: flutter pub get --no-example
+    - name: Clean e Instalar Dependencias
+      run: |
+        flutter clean
+        flutter pub get
 
     - name: Ejecutar Build APK
       run: flutter build apk --release --no-tree-shake-icons
