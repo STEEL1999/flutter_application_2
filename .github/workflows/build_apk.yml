@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
     steps:
     - name: Checkout repository
@@ -32,11 +34,6 @@ jobs:
     - name: Install Dependencies
       run: flutter pub get --no-example
 
-    - name: Build APK
-      uses: gradle/actions/setup-gradle@v3
-      with:
-        build-root-directory: android
-      
     - name: Executar Build APK
       run: flutter build apk --release --no-tree-shake-icons
 
