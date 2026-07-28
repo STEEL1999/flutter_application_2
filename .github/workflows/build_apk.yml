@@ -23,6 +23,8 @@ jobs:
       with:
         flutter-version: '3.19.x'
         channel: 'stable'
+        cache: true
+        cache-key: "flutter-:os:-:channel:-:version:-:arch:-:hash:"
 
     - name: Install Dependencies
       run: flutter pub get
